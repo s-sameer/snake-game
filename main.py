@@ -86,7 +86,7 @@ class Game:
         with open('resources/hs.txt', 'r') as f:
             self.highscore=int(f.read())
 
-    #snake collides with apple
+    #function to handle snake collision
     def is_collision(self,x1,y1,x2,y2):
         if self.snake.direction=='up' or self.snake.direction=='down':
             if (y1==y2+SIZE or y1==y2-SIZE) and x1==x2:
@@ -113,6 +113,7 @@ class Game:
                     self.snake.game_over_sound()
                     raise Exception
 
+    #function to display the score on the screen
     def display_score(self):
         self.cscore=self.snake.length-1
         font=pygame.font.SysFont('arial',25)
@@ -122,6 +123,7 @@ class Game:
         self.surface.blit(hscore, (20,0))
         pygame.display.update()
 
+    #function to handle game over event
     def show_gameover(self):
         self.surface.fill((0,0,0))
         font = pygame.font.SysFont('arial', 40)
@@ -142,12 +144,13 @@ class Game:
         self.surface.blit(line3,(270, 300))
         pygame.display.update()
 
-
+    #function to reset the game
     def reset(self):
         self.snake = Snake(self.surface, 1)
         self.apple = Apple(self.surface)
-
-    def run(self):
+    
+    #main function    
+    def run(self): 
         clock=pygame.time.Clock()
         running=True
         pause=False
