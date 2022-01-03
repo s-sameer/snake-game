@@ -4,6 +4,7 @@ import time
 import random
 
 SIZE=40
+
 class Apple:
     def __init__(self,parent_screen):
         self.apple=pygame.image.load("resources/apple.jpg").convert()
@@ -16,6 +17,7 @@ class Apple:
     def move(self,):
         self.x=random.randint(0,23)*SIZE
         self.y=random.randint(1,13)*SIZE
+
 class Snake:
     def __init__(self,parent_screen,length):
         self.length=length
@@ -81,7 +83,8 @@ class Game:
         self.apple=Apple(self.surface)
         self.apple.draw()
         self.load_data()
-
+    
+    #function to load highscore
     def load_data(self):
         with open('resources/hs.txt', 'r') as f:
             self.highscore=int(f.read())
@@ -186,4 +189,4 @@ class Game:
                 self.reset()
 
 game=Game()
-game.run()
+game.run()                                                                                                                                                                                                                                                                     
